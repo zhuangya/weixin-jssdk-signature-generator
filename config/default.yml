@@ -1,0 +1,9 @@
+weixin:
+  key: weixinKey
+  secret: weixinSecret
+port: 7676
+nonce: thereisnospoon!
+appId: weixin app id
+redis:
+  host: localhost
+  port: 6379
