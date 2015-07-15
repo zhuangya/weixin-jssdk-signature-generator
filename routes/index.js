@@ -29,10 +29,10 @@ router
   .post('/signature', function* getAccessToken (next) {
     var signTimestamp = Math.floor(+new Date() / 1000);
 
-    var accessToken = yield redis.get('wx:accessToken');
     var parsedUrl = url.parse(this.request.body.url);
     delete parsedUrl.hash;
 
+    var accessToken = yield redis.get('wx:accessToken');
     if (!accessToken) {
       accessToken = yield wxGet(
           sprint(WX_API.token, wxKey, wxSecret),
@@ -55,7 +55,7 @@ router
       timestamp: signTimestamp,
       jsapi_ticket: ticket,
       nonceStr: config.get('nonce'),
-      url: parsedUrl
+      url: url.format(parsedUrl)
     };
 
     var toSha1 = Object.keys(payload).sort().reduce(function (soFar, current) {
