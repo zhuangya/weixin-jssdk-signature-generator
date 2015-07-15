@@ -54,7 +54,7 @@ router
     var payload = {
       timestamp: signTimestamp,
       jsapi_ticket: ticket,
-      nonceStr: config.get('nonce'),
+      noncestr: config.get('nonce'),// shit!
       url: url.format(parsedUrl)
     };
 
