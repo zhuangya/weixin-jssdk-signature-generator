@@ -9,7 +9,6 @@ var Redis = require('ioredis');
 var url = require('url');
 var signer = require('../lib/signer');
 
-// TODO: redis connection config
 var redis = new Redis(config.get('redis'));
 
 var wxAppId = config.get('weixin.appId');
