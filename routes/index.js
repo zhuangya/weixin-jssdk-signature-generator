@@ -7,11 +7,12 @@ var config = require('config');
 var sha1 = require('sha1');
 var Redis = require('ioredis');
 var url = require('url');
+var signer = require('../lib/signer');
 
 // TODO: redis connection config
 var redis = new Redis(config.get('redis'));
 
-var wxKey = config.get('weixin.key');
+var wxAppId = config.get('weixin.appId');
 var wxSecret = config.get('weixin.secret');
 
 var WX_API = {
@@ -26,6 +27,11 @@ function* wxGet(endpoint, key) {
 }
 
 router
+  /**
+   * @api {post} /signature get weixin signature(config object)
+   * @apiName GetSignature
+   * @apiParam {String} url request page url
+   */
   .post('/signature', function* getAccessToken (next) {
     var signTimestamp = Math.floor(+new Date() / 1000);
 
@@ -35,7 +41,7 @@ router
     var accessToken = yield redis.get('wx:accessToken');
     if (!accessToken) {
       accessToken = yield wxGet(
-          sprint(WX_API.token, wxKey, wxSecret),
+          sprint(WX_API.token, wxAppId, wxSecret),
           'access_token'
         );
       redis.setex('wx:accessToken', 7200, accessToken);
@@ -54,21 +60,16 @@ router
     var payload = {
       timestamp: signTimestamp,
       jsapi_ticket: ticket,
-      noncestr: config.get('nonce'),// shit!
+      noncestr: config.get('nonce'),
       url: url.format(parsedUrl)
     };
 
-    var toSha1 = Object.keys(payload).sort().reduce(function (soFar, current) {
-      soFar.push([current, payload[current]].join('='));
-      return soFar;
-    }, []).join('&');
-
     this.body = {
-      appId: config.get('appId'),
+      appId: config.get('weixin.appId'),
       timestamp: signTimestamp,
       nonceStr: config.get('nonce'),
       jsApiList: [],
-      signature: sha1(toSha1)
+      signature: signer(payload)
     };
 
     yield next;
