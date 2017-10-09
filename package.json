@@ -24,7 +24,7 @@
     "koa-qs": "^2.0.0",
     "koa-request-id": "^1.0.1",
     "koa-router": "^5.1.2",
-    "mocha": "^2.2.5",
+    "mocha": "^4.0.0",
     "sha1": "^1.1.1",
     "sprint": "^0.3.1",
     "superagent": "^1.2.0",
