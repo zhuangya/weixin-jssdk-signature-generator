@@ -12,25 +12,25 @@
   "author": "Ya Zhuang <zhuangya@gotokeep.com>",
   "license": "MIT",
   "dependencies": {
-    "co-request": "^0.2.1",
-    "config": "^1.14.0",
-    "debug": "^2.2.0",
-    "ioredis": "^1.6.1",
+    "co-request": "^1.0.0",
+    "config": "^3.1.0",
+    "debug": "^4.1.1",
+    "ioredis": "^4.11.1",
     "js-yaml": "^3.3.1",
-    "koa": "^0.21.0",
-    "koa-bodyparser": "^2.0.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-cors": "0.0.16",
-    "koa-logger": "^1.2.2",
+    "koa-logger": "^3.2.0",
     "koa-qs": "^2.0.0",
     "koa-request-id": "^1.0.1",
-    "koa-router": "^5.1.2",
-    "mocha": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "mocha": "^6.1.4",
     "sha1": "^1.1.1",
     "sprint": "^0.3.1",
-    "superagent": "^1.2.0",
-    "supertest": "^1.0.1"
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "mocha": "^6.1.4"
   }
 }
