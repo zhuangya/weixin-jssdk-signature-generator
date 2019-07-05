@@ -1,5 +1,7 @@
 # weixin jssdk signature generator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zhuangya/weixin-jssdk-signature-generator.svg)](https://greenkeeper.io/)
+
 其实严格来说生成的不是 signature ，而是生成是页面上的 wx.config 需要的参数。
 
 只有一个接口：
