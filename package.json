@@ -27,7 +27,7 @@
     "mocha": "^4.0.0",
     "sha1": "^1.1.1",
     "sprint": "^0.3.1",
-    "superagent": "^1.2.0",
+    "superagent": "^5.1.0",
     "supertest": "^1.0.1"
   },
   "devDependencies": {
